@@ -1,0 +1,2 @@
+# scstack
+Sample DevOps Pipeline
