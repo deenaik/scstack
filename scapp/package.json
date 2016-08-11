@@ -4,6 +4,7 @@
   "description": "SwiftConnect",
   "main": "index.js",
   "scripts": {
+    "dev": "nodemon server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -20,6 +21,10 @@
   },
   "homepage": "https://github.com/deenaik/scstack#readme",
   "dependencies": {
+    "body-parser": "^1.15.2",
     "express": "^4.14.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.10.0"
   }
 }
