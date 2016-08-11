@@ -1,13 +1,21 @@
 console.log('SwiftConnect Starting')
 
-const express = require('express');
-const bodyParser = require('body-parser')
-const app = express();
+//For User Interface
+const express = require('express'); 
 
+//For retriving data
+const bodyParser = require('body-parser') 
+const app = express();
 app.use(bodyParser.urlencoded({extended:true}))
 
-app.listen(3000, function() {
+//For Using Database client
+const MongoClient = require('mongodb').MongoClient
+MongoClient.connect('mongodb://scdbuser:111111@localhost:27017/scdb', (err, database) => {
+	if (err) return console.log(err)
+		db = database
+	app.listen(3000, function() {
 	console.log('listening on 3000')
+	})
 })
 
 // app.get('/', function (req, res) {
@@ -17,13 +25,22 @@ app.listen(3000, function() {
 
 //Same example as above in ES6 code.
 app.get('/', (req,res) => {
+	var cursor = db.collection('stages').find().toArray(function(err, results) {
+		console.log(results)
+	})
 	res.sendFile(__dirname + '/index.html')
 	// Note: __dirname is the path to your current working directory.
 //	res.send('Welcome to SwiftConnect')
 })
 
+// posting data inserted into database
 app.post('/stages', (req,res) => {
-	console.log(req.body)
+	db.collection('stages').save (req.body, (err,result) => {
+		if (err) return console.log(err)
+		console.log('Saved to database')
+		res.redirect('/') //Otherwise browser will be stuck forever
+	})
+	
 })
 
 console.log('SwiftConnect Started')
