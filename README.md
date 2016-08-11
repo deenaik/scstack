@@ -20,10 +20,6 @@ Sample DevOps Pipeline for app built using Node.js, Express and MongoDB
 	`npm install body-parser --save`
 	* Install MongoDB client
 	`npm install mongodb --save`
-
-# Pending Items
-
-## App development
 * Create container for DB
 	* Install DB from [Here] (https://www.mongodb.com/download-center?jmp=nav#community).
 	* creat data folder under <project_root>/scdb/data
@@ -60,6 +56,14 @@ Sample DevOps Pipeline for app built using Node.js, Express and MongoDB
 		```
 		* fire simple query to retrive results.
 		`db.stages.find()`
+	* Install EJS (Embedded JavaScript) template engine to get the data from DB and render it as HTML in page.
+	`npm install ejs --save`
+	
+	
+# Pending Items
+
+## App development
+
 * Create sample page on app
 * connect app to DB
 * Sample intraction between app and DB

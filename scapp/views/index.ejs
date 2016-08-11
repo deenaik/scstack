@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>SwiftConnect</title>
+</head>
+<body bgcolor="#e1eaea">
+  <h1>Welcome to SwiftConnect.</h1>
+  <br><br>
+
+  <ul class="stages">
+    <% for(var i=0; i<stages.length; i++) {%>
+      <li class="stage">
+        <span><strong><%= stages[i].stageName %>:</strong></span>
+        <span><%= stages[i].stageType %></span>
+      </li>
+    <% } %>
+  </ul>
+  
+  <br><br>
+  <form action="/stages" method="POST">
+    Enter Stage name: 
+	<input type="text" placeholder="Stage Name" name="stageName">
+	<br><br>
+	Select Stage Type: 
+	<select name="stageType">
+	  <option value="Plan">Plan</option>
+	  <option value="Build">Build</option>
+	  <option value="Deploy">Deploy</option>
+	  <option value="Test">Test</option>
+	  <option value="Release">Release</option>
+	</select>
+	<br><br>
+	<button type="submit">Add Stage</button>
+  </form>
+</body>
+</html>

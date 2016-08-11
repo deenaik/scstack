@@ -2,6 +2,7 @@ console.log('SwiftConnect Starting')
 
 //For User Interface
 const express = require('express'); 
+//app.set('view engine','ejs')
 
 //For retriving data
 const bodyParser = require('body-parser') 
@@ -25,10 +26,12 @@ MongoClient.connect('mongodb://scdbuser:111111@localhost:27017/scdb', (err, data
 
 //Same example as above in ES6 code.
 app.get('/', (req,res) => {
-	var cursor = db.collection('stages').find().toArray(function(err, results) {
-		console.log(results)
+	db.collection('stages').find().toArray((err, result) => {
+		if (err) return console.log(err)
+			//renders index.ejs
+		res.render('index.ejs', {stages: result})
 	})
-	res.sendFile(__dirname + '/index.html')
+	//res.sendFile(__dirname + '/index.html')
 	// Note: __dirname is the path to your current working directory.
 //	res.send('Welcome to SwiftConnect')
 })
